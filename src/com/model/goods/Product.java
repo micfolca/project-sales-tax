@@ -22,6 +22,9 @@ public abstract class Product {
 	//price of the product (include sales tax)
 	private BigDecimal totalCost;
 	
+	//price of the product (without sales tax)
+	private BigDecimal initialCost;
+	
 	
 	//constructor	
 	public Product(String name, boolean imported, int quantity, BigDecimal unitCost) {
@@ -30,13 +33,23 @@ public abstract class Product {
 		this.quantity = quantity;
 		this.unitCost = unitCost;	
 		//calculate TotalCost
-		totalCost = unitCost.multiply(new BigDecimal(quantity));
+		this.totalCost = unitCost.multiply(new BigDecimal(quantity));
+		this.initialCost=totalCost;
+	
 	}
 
 	/*get & set*/
 	public String getName() {
 		return name;
 	}
+	public BigDecimal getInitialCost() {
+		return initialCost;
+	}
+
+	public void setInitialCost(BigDecimal initialCost) {
+		this.initialCost = initialCost;
+	}
+
 	public BigDecimal getUnitCost() {
 		return unitCost;
 	}
