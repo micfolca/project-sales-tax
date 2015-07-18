@@ -31,6 +31,10 @@
     </plugin>
 	</plugins>
   </build>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+</properties>
   <scm>
 	<connection>scm:git:git@github.com:micfolca/project-sales-tax.git</connection>
 	<url>scm:git:git@github.com:micfolca/project-sales-tax.git</url>
