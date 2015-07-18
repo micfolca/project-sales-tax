@@ -3,6 +3,8 @@ package com.test;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -56,18 +58,30 @@ public class Test {
 		
 		
 		//print all baskets
+		printInput(listInput1);
 		stb.printBasket(basket1);
+		printInput(listInput2);
 		stb.printBasket(basket2);
+		printInput(listInput3);
 		stb.printBasket(basket3);
 	}
 	
 	private static Basket processInput(List<Product> list){
 		Basket basket = new Basket();
 		basket = stb.calculateBasket(list);
-		System.out.println(basket.toString());
-		System.out.println("--------");
-		
+		//System.out.println(basket.toString());
+		//System.out.println("--------");
 		return basket;
+	}
+	
+	private static void printInput(List<Product> list){
+		NumberFormat nf = new DecimalFormat("##.##");
+		System.out.println("Input ");
+		for (Iterator<Product> iterator = list.iterator(); iterator.hasNext();) {
+			Product product = (Product) iterator.next();
+			System.out.println("\t"+nf.format(product.getQuantity())+" "+product.getName()+" "
+								 +product.getInitialCost());
+		}
 	}
 	
 }
