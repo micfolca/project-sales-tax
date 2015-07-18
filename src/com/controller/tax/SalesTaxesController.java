@@ -3,6 +3,8 @@ package com.controller.tax;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.Formatter.BigDecimalLayoutForm;
 import java.util.Iterator;
 import java.util.List;
@@ -73,11 +75,12 @@ public class SalesTaxesController {
 	 * 
 	 */
 	public void printBasket(Basket basket){
-		System.out.println("Basket");
+		NumberFormat nf = new DecimalFormat("##.##");
+		System.out.println("Basket output");
 		for (Iterator<Product> iterator = basket.getListProduct().iterator(); iterator.hasNext();) {
 			Product product = (Product) iterator.next();
-			System.out.println("\t"+product.getQuantity()+" "+product.getName()+" "
-								 +product.getTotalCost());
+			System.out.println("\t"+nf.format(product.getQuantity())+" "+product.getName()+" "
+								 +nf.format(product.getTotalCost()));
 		}
 		System.out.println("Sales Taxes: "+basket.getSalesTax());
 		System.out.println("Total: "+basket.getTotalCost());
